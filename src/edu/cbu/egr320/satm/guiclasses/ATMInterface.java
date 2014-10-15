@@ -100,7 +100,6 @@ public class ATMInterface extends JFrame {
 		getContentPane().add(receiptBtn);
 		
 		JButton cashDispenserBtn = new JButton("Cash Dispenser");
-
 		cashDispenserBtn.setBounds(35, 402, 213, 25);
 		getContentPane().add(cashDispenserBtn);
 		
@@ -171,15 +170,15 @@ public class ATMInterface extends JFrame {
 		btnCycleScreens.setBounds(35, 306, 122, 30);
 		getContentPane().add(btnCycleScreens);
 		
-		JPanel screen1 = new WelcomeScreen();
+		final Screen1 screen1 = new Screen1();
 		screenContainer.add(screen1);
 		screen1.setName("Welcome Screen");
 		
-		JPanel screen2 = new InvalidATMCard();
+		final InvalidATMCard screen2 = new InvalidATMCard();
 		screenContainer.add(screen2);
 		screen2.setName("Invalid ATM Card");
 	
-		JPanel screen3 = new PinEntry();
+		final PinEntry screen3 = new PinEntry();
 		screenContainer.add(screen3);
 		screen3.setName("PIN Entry");
 		
@@ -195,7 +194,7 @@ public class ATMInterface extends JFrame {
 		screenContainer.add(screen6);
 		screen6.setName("Balance Display");
 		
-		JPanel screen7 = new EnterAmount();
+		final EnterAmount screen7 = new EnterAmount();
 		screenContainer.add(screen7);
 		screen7.setName("Enter Amount");
 		
@@ -203,7 +202,7 @@ public class ATMInterface extends JFrame {
 		screenContainer.add(screen8);
 		screen8.setName("Insufficient Funds");
 		
-		JPanel screen9 = new ATMcashPanel();
+		final ATMcashPanel screen9 = new ATMcashPanel();
 		screenContainer.add(screen9);
 		screen9.setName("ATM Cash Panel");
 		
@@ -231,24 +230,28 @@ public class ATMInterface extends JFrame {
 		screenContainer.add(screen15);
 		screen15.setName("Take Receipt");
 		
+		//Action listener to take the buttons when they are pressed and append them into the screen on the
+		//Appropriate one
+		//Jacob Frey 10/14/2014
 		ActionListener numberListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JButton thisButton = (JButton)e.getSource();
-				String currentScreen = SATM_Library.getCurrentCardString(screenContainer);
-				JPanel currentCard = SATM_Library.getCurrentCard(screenContainer);
-				String buttonPressed = thisButton.getText();
-				JTextField myField = new JTextField();
-				myField.getText();
-				SATM_Library.numberPressed(buttonPressed, currentScreen);
-				switch(currentScreen){
+				String currentScreenName = SATM_Library.getCurrentCardString(screenContainer);
+				String buttonValue = thisButton.getText();
+				
+				//Create a method in each panel that appends a string into the panels text field, then call that 
+				//method in this method
+				switch(currentScreenName){
 				case "PIN Entry":
-					//currentCard.setText(currentCard.getText() + buttonPressed);
+					screen3.updateTextField(buttonValue);
+					break;
 				case "Enter Amount":
-					
+					screen7.updateTextField(buttonValue);
+					break;
 				case "ATM Cash Panel":
-					
-					return ;
+					screen9.updateTextField(buttonValue);
+					break;
 				}
 			}
 		};
@@ -263,11 +266,28 @@ public class ATMInterface extends JFrame {
 		btnNum8.addActionListener(numberListener);
 		btnNum9.addActionListener(numberListener);
 		btnNum0.addActionListener(numberListener);
-		//Need to do things on screen 3, 7, 9
+		
+		clearBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String currentScreenName = SATM_Library.getCurrentCardString(screenContainer);
+				
+				switch(currentScreenName){
+				case "PIN Entry":
+					screen3.clearTextField();
+					break;
+				case "Enter Amount":
+					screen7.clearTextField();
+					break;
+				case "ATM Cash Panel":
+					screen9.clearTextField();
+					break;
+				}	
+			}
+		});
 		
 		cashDispenserBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//eString currentScreen = SATM_Library.getCurrentCard(screenContainer);
+				//String currentScreen = SATM_Library.getCurrentCard(screenContainer);
 
 			}
 		});

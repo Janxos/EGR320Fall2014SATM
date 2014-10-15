@@ -14,7 +14,7 @@ public class ATMcashPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField MoneyInput;
+	private JTextField myTextField;
 
 	/**
 	 * Create the panel.
@@ -29,13 +29,13 @@ public class ATMcashPanel extends JPanel {
 		txtpnPrompt.setBounds(74, 36, 196, 51);
 		add(txtpnPrompt);
 		
-		MoneyInput = new JTextField();
-		MoneyInput.setBackground(UIManager.getColor("Button.disabledShadow"));
-		MoneyInput.setEditable(false);
-		MoneyInput.requestFocus();
-		MoneyInput.setBounds(141, 91, 57, 20);
-		add(MoneyInput);
-		MoneyInput.setColumns(10);
+		myTextField = new JTextField();
+		myTextField.setBackground(UIManager.getColor("Button.disabledShadow"));
+		myTextField.setEditable(false);
+		myTextField.requestFocus();
+		myTextField.setBounds(141, 91, 57, 20);
+		add(myTextField);
+		myTextField.setColumns(10);
 		
 		JTextPane $10 = new JTextPane();
 		$10.setEditable(false);
@@ -108,5 +108,20 @@ public class ATMcashPanel extends JPanel {
 		$80.setBounds(291, 139, 24, 20);
 		add($80);
 
+	}
+	public void setText(String myText){
+		myTextField.setText(myText);
+	}
+	
+	public String getText(){
+		return myTextField.getText();
+	}
+	
+	public void updateTextField(String numberValue){
+		myTextField.setText(myTextField.getText() + numberValue);
+	}
+
+	public void clearTextField(){
+		myTextField.setText("");
 	}
 }

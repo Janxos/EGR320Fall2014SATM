@@ -4,12 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class WelcomeScreen extends JPanel {
+public class Screen1 extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public WelcomeScreen() {
+	public Screen1() {
 		setLayout(null);
 						
 		JLabel lblNewLabel = new JLabel("Rock Solid Federal Credit Union");

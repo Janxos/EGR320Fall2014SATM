@@ -11,7 +11,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
 public class PinEntry extends JPanel {
-	private JTextField enterPIN;
+	private JTextField myTextField;
 	
 	String pin;
 	/**
@@ -33,23 +33,30 @@ public class PinEntry extends JPanel {
 		gbc_lblPleaseEnterYour.gridy = 2;
 		add(lblPleaseEnterYour, gbc_lblPleaseEnterYour);
 		
-		enterPIN = new JTextField();
-		enterPIN.setEnabled(false);
-		enterPIN.setHorizontalAlignment(SwingConstants.CENTER);
+		myTextField = new JTextField();
+		myTextField.setEnabled(false);
+		myTextField.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_enterPIN = new GridBagConstraints();
 		gbc_enterPIN.insets = new Insets(0, 0, 5, 5);
 		gbc_enterPIN.gridx = 3;
 		gbc_enterPIN.gridy = 3;
-		add(enterPIN, gbc_enterPIN);
-		enterPIN.setColumns(10);
+		add(myTextField, gbc_enterPIN);
+		myTextField.setColumns(10);
 	}
 	
 	public void setText(String myText){
-		enterPIN.setText(myText);
+		myTextField.setText(myText);
 	}
 	
 	public String getText(){
-		return enterPIN.getText();
+		return myTextField.getText();
+	}
+	
+	public void updateTextField(String numberValue){
+		myTextField.setText(myTextField.getText() + numberValue);
 	}
 
+	public void clearTextField(){
+		myTextField.setText("");
+	}
 }

@@ -8,7 +8,7 @@ import java.awt.Insets;
 import javax.swing.JTextField;
 
 public class EnterAmount extends JPanel {
-	private JTextField textField;
+	private JTextField myTextField;
 
 	/**
 	 * Create the panel.
@@ -28,14 +28,29 @@ public class EnterAmount extends JPanel {
 		lblEnterAmmount.setBounds(115, 6, 100, 50);
 		add(lblEnterAmmount);
 		
-		textField = new JTextField();
-		textField.setBounds(58, 55, 200, 29);
-		add(textField);
-		textField.setColumns(10);
+		myTextField = new JTextField();
+		myTextField.setBounds(58, 55, 200, 29);
+		add(myTextField);
+		myTextField.setColumns(10);
 		
 		JLabel lblEnterAmountIn = new JLabel("Enter amount in multiples of $10.");
 		lblEnterAmountIn.setBounds(54, 88, 217, 50);
 		add(lblEnterAmountIn);
 
+	}
+	public void setText(String myText){
+		myTextField.setText(myText);
+	}
+	
+	public String getText(){
+		return myTextField.getText();
+	}
+	
+	public void updateTextField(String numberValue){
+		myTextField.setText(myTextField.getText() + numberValue);
+	}
+
+	public void clearTextField(){
+		myTextField.setText("");
 	}
 }
