@@ -1,4 +1,4 @@
-package satm_interface_gui;
+package edu.cbu.egr320.satm.guiclasses;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -24,7 +24,7 @@ import java.awt.Font;
 
 import javax.swing.SwingConstants;
 
-import edu.cbu.satm_library.SATM_Library;
+import edu.cbu.egr320.satm.libraryclasses.SATMLibrary;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -173,18 +173,18 @@ public class ATMInterface extends JFrame {
 		final Screen1 screen1 = new Screen1();
 		screenContainer.add(screen1);
 		screen1.setName("Welcome Screen");
-		
-		final InvalidATMCard screen2 = new InvalidATMCard();
-		screenContainer.add(screen2);
-		screen2.setName("Invalid ATM Card");
 	
-		final PinEntry screen3 = new PinEntry();
-		screenContainer.add(screen3);
-		screen3.setName("PIN Entry");
+		final PinEntry screen2 = new PinEntry();
+		screenContainer.add(screen2);
+		screen2.setName("PIN Entry");
 		
-		JPanel screen4 = new PinIncorrectNotification();
+		JPanel screen3 = new PinIncorrectNotification();
+		screenContainer.add(screen3);
+		screen3.setName("Pin Incorrect Notification");
+		
+		final InvalidATMCard screen4 = new InvalidATMCard();
 		screenContainer.add(screen4);
-		screen4.setName("Pin Incorrect Notification");
+		screen4.setName("Invalid ATM Card");
 		
 		JPanel screen5 = new TransactionMenu();
 		screenContainer.add(screen5);
@@ -230,21 +230,21 @@ public class ATMInterface extends JFrame {
 		screenContainer.add(screen15);
 		screen15.setName("Take Receipt");
 		
+		//Jacob Frey 10/14/2014
 		//Action listener to take the buttons when they are pressed and append them into the screen on the
 		//Appropriate one
-		//Jacob Frey 10/14/2014
 		ActionListener numberListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JButton thisButton = (JButton)e.getSource();
-				String currentScreenName = SATM_Library.getCurrentCardString(screenContainer);
+				String currentScreenName = SATMLibrary.getCurrentCardString(screenContainer);
 				String buttonValue = thisButton.getText();
 				
 				//Create a method in each panel that appends a string into the panels text field, then call that 
 				//method in this method
 				switch(currentScreenName){
 				case "PIN Entry":
-					screen3.updateTextField(buttonValue);
+					screen2.updateTextField(buttonValue);
 					break;
 				case "Enter Amount":
 					screen7.updateTextField(buttonValue);
@@ -267,13 +267,15 @@ public class ATMInterface extends JFrame {
 		btnNum9.addActionListener(numberListener);
 		btnNum0.addActionListener(numberListener);
 		
+		//Jacob Frey 10/15/2014
+		//Action listener clear the entry in the text field when the clear button is pressed
 		clearBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String currentScreenName = SATM_Library.getCurrentCardString(screenContainer);
+				String currentScreenName = SATMLibrary.getCurrentCardString(screenContainer);
 				
 				switch(currentScreenName){
 				case "PIN Entry":
-					screen3.clearTextField();
+					screen2.clearTextField();
 					break;
 				case "Enter Amount":
 					screen7.clearTextField();
@@ -285,6 +287,27 @@ public class ATMInterface extends JFrame {
 			}
 		});
 		
+		enterBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String currentScreenName = SATMLibrary.getCurrentCardString(screenContainer);
+				
+				switch(currentScreenName){
+				case "PIN Entry":
+					//Call method to check number against account class
+					break;
+				case "Enter Amount":
+					
+					break;
+				case "ATM Cash Panel":
+					
+					break;
+				}					
+			}
+		});
+		
+		//Jacob Frey 10/02/214
+		//A helpful button that will not be in the final project
+		//Allows us to cycle through the screens in the gui
 		cashDispenserBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//String currentScreen = SATM_Library.getCurrentCard(screenContainer);

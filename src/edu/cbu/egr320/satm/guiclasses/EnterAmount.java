@@ -1,4 +1,4 @@
-package satm_interface_gui;
+package edu.cbu.egr320.satm.guiclasses;
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;

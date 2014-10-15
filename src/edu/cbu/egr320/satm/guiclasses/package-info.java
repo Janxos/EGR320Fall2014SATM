@@ -5,4 +5,4 @@
  * @author Jacob
  *
  */
-package satm_interface_gui;
+package edu.cbu.egr320.satm.guiclasses;

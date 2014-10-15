@@ -1,0 +1,15 @@
+Design for the SATM and things that need to be done.
+Feel free to update the list as you complete things
+
+Design information:
+Screen Size-325x175 px
+Font-
+
+Things to do:
+Decide on a font for the system
+Fix the names of all the classes
+Comment so we know who made which class
+Fix certain screens (will talk about this on friday)
+get rid of any jGoodies or other external libraries
+discuss interaction between the GUI and classes
+delete placeholder account class once someone uploads to the class folder in the repository
