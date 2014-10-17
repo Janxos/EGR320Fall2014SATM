@@ -1,3 +1,7 @@
+/*
+ * Author: Daniel Worthington 
+ */
+
 package edu.cbu.egr320.satm.domainclasses;
 
 
