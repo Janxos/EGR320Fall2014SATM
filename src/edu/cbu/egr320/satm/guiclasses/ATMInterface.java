@@ -231,8 +231,8 @@ public class ATMInterface extends JFrame {
 		screen15.setName("Take Receipt");
 		
 		//Jacob Frey 10/14/2014
-		//Action listener to take the buttons when they are pressed and append them into the screen on the
-		//Appropriate one
+		//Custom action listener to take the buttons when they are pressed and append them into the screen on the
+		//appropriate one
 		ActionListener numberListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -287,6 +287,10 @@ public class ATMInterface extends JFrame {
 			}
 		});
 		
+		//Jacob Frey 10/16/2014
+		//The start of a listener for the enter button that will have various commands on different screens
+		//Most of the time, it will call methods that will check the current text field value against the value
+		//that is a part of a class
 		enterBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String currentScreenName = SATMLibrary.getCurrentCardString(screenContainer);

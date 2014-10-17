@@ -3,10 +3,9 @@ Feel free to update the list as you complete things
 
 Design information:
 Screen Size-325x175 px
-Font-
+Font-Arial size 15, Black
 
 Things to do:
-Decide on a font for the system
 Fix the names of all the classes
 Comment so we know who made which class
 Fix certain screens (will talk about this on friday)
