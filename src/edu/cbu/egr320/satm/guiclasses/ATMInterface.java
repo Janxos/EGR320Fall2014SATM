@@ -186,11 +186,11 @@ public class ATMInterface extends JFrame {
 		screenContainer.add(screen4);
 		screen4.setName("Invalid ATM Card");
 		
-		JPanel screen5 = new TransactionMenu();
+		JPanel screen5 = new Screen5();
 		screenContainer.add(screen5);
 		screen5.setName("Transaction Menu");
 		
-		JPanel screen6 = new BalanceDisplay();
+		JPanel screen6 = new Screen6();
 		screenContainer.add(screen6);
 		screen6.setName("Balance Display");
 		
@@ -305,6 +305,7 @@ public class ATMInterface extends JFrame {
 				case "ATM Cash Panel":
 					
 					break;
+				
 				}					
 			}
 		});

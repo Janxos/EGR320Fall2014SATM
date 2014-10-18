@@ -30,6 +30,17 @@ public class Account {
 		balance = aBalance;		
 	}
 	
+	public Account(Account a){
+		if (this != a)
+		{
+			this.firstName = a.firstName;
+			this.lastName = a.lastName;
+			this.PAN = a.PAN;
+			this.PIN = a.PIN;
+			this.balance = a.balance;
+		}
+	}
+	
 	//Get Methods
 	public String getFirstName()
 	{	return firstName;	}

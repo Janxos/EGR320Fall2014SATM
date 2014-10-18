@@ -1,12 +1,13 @@
 package edu.cbu.egr320.satm.domainclasses;
 
 
+
 public class DepositSlot {
 	private Account someAccount;
 	private double amount;
 	
 	public DepositSlot(Account a){
-		someAccount.equals(a);
+		someAccount = new Account(a);
 	}
 	
 	public void makeDeposit(double amount){
